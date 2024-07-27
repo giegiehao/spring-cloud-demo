@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: cloud-employee8081
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+      config:
+        format: YAML
+        profile-separator: '-'
