@@ -1,0 +1,38 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: cloud-openfeign
+  cloud:
+    consul:
+      port: 8500
+      host: localhost
+      discovery:
+        service-name: ${spring.application.name}
+        prefer-ip-address: true # 优先使用服务ip进行注册
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 4000
+            read-timeout: 4000
+          cloud-user8080:
+            connect-timeout: 8000
+            read-timeout: 8000
+      httpclient:
+        hc5:
+          enabled: true
+      compression:
+        request:
+          enabled: true
+          min-request-size: 2048
+          mime-types: text/xml,application/xml,application/json
+        response:
+          enabled: true
+logging:
+  level:
+    org:
+      example:
+        apis:
+          AccountFeignApi: debug

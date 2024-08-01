@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.mapper.TEmployeeMapper">
+    <resultMap id="BaseResultMap" type="org.example.entity.DO.EmployeeDO">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="department" property="department" />
+        <result column="position" property="position" />
+    </resultMap>
+
+</mapper>

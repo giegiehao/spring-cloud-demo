@@ -1,7 +1,6 @@
 package org.example.entity.DO;
 
 import lombok.Data;
-import org.example.entity.VO.UserVO;
 
 /**
  * (User)表实体类

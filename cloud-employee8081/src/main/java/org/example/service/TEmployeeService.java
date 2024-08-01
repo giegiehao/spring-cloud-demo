@@ -1,7 +1,8 @@
 package org.example.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.example.entity.DO.Employee;
+import org.example.entity.DO.EmployeeDO;
+import org.example.entity.Employee;
 
 /**
  * (TEmployee)表服务接口

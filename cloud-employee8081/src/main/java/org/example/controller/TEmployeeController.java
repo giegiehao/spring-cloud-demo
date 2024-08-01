@@ -1,14 +1,14 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.entity.DO.Employee;
+import org.example.entity.DO.EmployeeDO;
+import org.example.entity.Employee;
 import org.example.entity.VO.AccountVO;
 import org.example.resp.Resp;
 import org.example.service.TEmployeeService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,7 +26,7 @@ public class TEmployeeController {
      */
     private final TEmployeeService tEmployeeService;
     private final RestTemplate restTemplate;
-    private static final String URL = "http://cloud-user8080";
+    private final String URL = "http://cloud-user8080";
 
     /**
      * 分页查询所有数据
@@ -41,7 +41,7 @@ public class TEmployeeController {
     }
     @GetMapping("/account")
     public Resp<List<AccountVO>> RestTemplateGetAccount() {
-        Resp<List<AccountVO>> forObject = restTemplate.getForObject(URL, Resp.class);
+        Resp<List<AccountVO>> forObject = restTemplate.getForObject(URL+"/tAccount", Resp.class);
         List<AccountVO> data = forObject.getData();
 
         return Resp.success(data);

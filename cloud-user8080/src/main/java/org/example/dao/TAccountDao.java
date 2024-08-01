@@ -1,7 +1,7 @@
 package org.example.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.example.entity.DO.Account;
+import org.example.entity.DO.TAccount;
 
 /**
  * (TAccount)表数据库访问层
@@ -9,7 +9,7 @@ import org.example.entity.DO.Account;
  * @author makejava
  * @since 2024-07-26 18:28:19
  */
-public interface TAccountDao extends BaseMapper<Account> {
+public interface TAccountDao extends BaseMapper<TAccount> {
 
 }
 

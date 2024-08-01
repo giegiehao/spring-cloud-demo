@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.entity.DO.Account;
+import org.example.entity.DO.TAccount;
 import org.example.entity.VO.AccountVO;
 import org.example.resp.Resp;
 import org.example.service.TAccountService;
@@ -24,16 +24,23 @@ public class TAccountController {
      */
     private final TAccountService tAccountService;
 
-    /**
-     * 分页查询所有数据
-     *
-     * @return 所有数据
-     */
     @GetMapping
     public Resp<List<AccountVO>> getAll() {
-        List<Account> list = tAccountService.list();
+        try {
+            Thread.sleep(62000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        List<TAccount> list = tAccountService.list();
         List<AccountVO> accountVOS = AccountVO.ofList(list);
         return Resp.success(accountVOS);
+    }
+
+    @GetMapping("/{id}")
+    public Resp<AccountVO> queryById(@PathVariable("id") String id) {
+        TAccount byId = tAccountService.getById(id);
+        AccountVO accountVO = AccountVO.of(byId);
+        return Resp.success(accountVO);
     }
 }
 

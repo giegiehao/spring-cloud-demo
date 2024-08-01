@@ -1,7 +1,6 @@
 package org.example.entity.VO;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.convert.Convert;
 import lombok.Data;
 import org.example.entity.DO.User;
 

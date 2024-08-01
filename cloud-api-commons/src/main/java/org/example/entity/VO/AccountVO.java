@@ -2,8 +2,7 @@ package org.example.entity.VO;
 
 import cn.hutool.core.bean.BeanUtil;
 import lombok.Data;
-import org.example.entity.DO.Account;
-import org.springframework.context.annotation.Bean;
+import org.example.entity.DO.TAccount;
 
 import java.util.List;
 
@@ -13,13 +12,13 @@ public class AccountVO {
 
     private String username;
 
-    public static AccountVO of(Account account) {
+    public static AccountVO of(TAccount TAccount) {
         AccountVO accountVO = new AccountVO();
-        BeanUtil.copyProperties(account, accountVO);
+        BeanUtil.copyProperties(TAccount, accountVO);
         return accountVO;
     }
 
-    public static List<AccountVO> ofList(List<Account> accounts) {
-        return BeanUtil.copyToList(accounts, AccountVO.class);
+    public static List<AccountVO> ofList(List<TAccount> TAccounts) {
+        return BeanUtil.copyToList(TAccounts, AccountVO.class);
     }
 }

@@ -12,6 +12,7 @@
         <module>cloud-api-commons</module>
         <module>cloud-user8080</module>
         <module>cloud-employee8081</module>
+        <module>cloud-openfeign-client8090</module>
     </modules>
 
     <properties>

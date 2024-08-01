@@ -2,7 +2,7 @@ package org.example.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.example.dao.TAccountDao;
-import org.example.entity.DO.Account;
+import org.example.entity.DO.TAccount;
 import org.example.service.TAccountService;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @since 2024-07-26 18:28:21
  */
 @Service("tAccountService")
-public class TAccountServiceImpl extends ServiceImpl<TAccountDao, Account> implements TAccountService {
+public class TAccountServiceImpl extends ServiceImpl<TAccountDao, TAccount> implements TAccountService {
 
 }
 
