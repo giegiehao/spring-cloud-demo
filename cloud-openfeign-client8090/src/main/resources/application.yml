@@ -30,6 +30,53 @@ spring:
           mime-types: text/xml,application/xml,application/json
         response:
           enabled: true
+      circuitbreaker:
+        enabled: true # 使用断路器
+        group:
+          enabled: true # 使用配置组
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        failureRateThreshold: 50
+        slidingWindowType: count_based
+        slidingWindowSize: 6
+        minimumNumberOfCalls: 6
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 2
+        recordExceptions:
+          - java.lang.Exception
+    instances:
+      cloud-demo-8080:
+        baseConfig: default
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 10s
+  bulkhead:
+    configs:
+      configA:
+        maxConcurrentCalls: 3 # 最大信号量(并发)
+        maxWaitDuration: 500ms # 最大等待时间,拿不到信号就走服务降级
+    instances:
+      cloud-demo-8080A:
+        baseConfig: configA
+  thread-pool-bulkhead:
+    instances:
+      cloud-demo-8080B:
+        coreThreadPoolSize: 1 # 核心线程数
+        maxThreadPoolSize: 1 # 最大线程数
+        queueCapacity: 1 # 队列容量
+# 使用线程池隔离需要把spring.cloud.openfeign.circuitbreaker.group.enable设置为false？
+
+  ratelimiter:
+    instances:
+      cloud-demo-8  080C:
+        limitForPeriod: 2 # 刷新时间内最大请求数
+        limitRefreshPeriod: 1s # 刷新时间
+        timeoutDuration: 500ms # 线程等待权限时间
 logging:
   level:
     org:

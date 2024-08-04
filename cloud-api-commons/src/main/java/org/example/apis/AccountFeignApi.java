@@ -19,4 +19,10 @@ public interface AccountFeignApi {
 
     @GetMapping("/test/port")
     Resp<String> getPort();
+
+    @GetMapping("/test/circuitBreaker/{sleep}")
+    Resp<String> circuitBreakerTest(@PathVariable("sleep") Integer sleep);
+
+    @GetMapping("/test/bulkhead/{id}")
+    Resp<String> bulkheadTest(@PathVariable("id") String id);
 }
