@@ -77,6 +77,17 @@ resilience4j:
         limitForPeriod: 2 # 刷新时间内最大请求数
         limitRefreshPeriod: 1s # 刷新时间
         timeoutDuration: 500ms # 线程等待权限时间
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+
+
 logging:
   level:
     org:

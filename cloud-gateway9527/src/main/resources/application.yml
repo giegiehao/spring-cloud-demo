@@ -1,0 +1,30 @@
+server:
+  port: 9527
+
+
+spring:
+  cloud:
+    consul:
+      discovery:
+#        prefer-ip-address: true
+        service-name: ${spring.application.name}
+      port: 8500
+      host: localhost
+    gateway:
+      routes:
+        - id: cloud-user8080 # 路由id，路由的唯一标识
+#          uri: http://localhost:8080
+          uri: lb://cloud-user8080 # lb标识负载均衡，从服务注册中心中发现服务
+          predicates:
+            - Path=/user/** # 转发条件
+
+        - id: cloud-openfeign-client8090
+          uri: lb://cloud-openfeign
+          predicates:
+            - Path=/feign/**
+            - My=100
+#            - name: My
+#              args:
+#                grade: 100
+  application:
+    name: cloud-gateway9527

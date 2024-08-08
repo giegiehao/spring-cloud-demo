@@ -13,6 +13,7 @@
         <module>cloud-user8080</module>
         <module>cloud-employee8081</module>
         <module>cloud-openfeign-client8090</module>
+        <module>cloud-gateway9527</module>
     </modules>
 
     <properties>
