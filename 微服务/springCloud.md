@@ -1,5 +1,3 @@
-[TOC]
-
 # Spring Cloud
 
 ## 架构
