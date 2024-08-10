@@ -26,5 +26,15 @@ spring:
 #            - name: My
 #              args:
 #                grade: 100
+        - id: cloud-openfeign-filter
+          uri: lb://cloud-openfeign
+          predicates:
+            - Path=/filter/**
+          filters:
+            - AddRequestHeader=X-Request-info, filter
+            - AddResponseHeader=X-Response-info, filter
+
+
+
   application:
     name: cloud-gateway9527
